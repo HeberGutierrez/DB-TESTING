@@ -45,34 +45,44 @@ CREATE TABLE test (
  CREATE TABLE analytical_assesment (
   analytical_assesment_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
    testID int,
-   question varchar(255) NOT NULL,
+   question_2 varchar(255) NOT NULL,
    FOREIGN KEY (testID) REFERENCES test(testID)
  );
 
  CREATE TABLE reading_assesment (
    reading_assesment_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
    testID int,
-   question varchar(255) NOT NULL,
+   question_3 varchar(255) NOT NULL,
    FOREIGN KEY (testID) REFERENCES test(testID)
  );
 
  CREATE TABLE writing_assesment (
    writing_assesment_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
    testID int,
-   question varchar(255) NOT NULL,
+   question_4 varchar(255) NOT NULL,
    FOREIGN KEY (testID) REFERENCES test(testID)
  );
 
-CREATE TABLE user_answers(
-  user_answers_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE user_mind_assesment(
+  user_mind_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   studentID int,
-  testID int,
+  mind_assesment_ID int,
+  answer int(5), NOT NULL,
   FOREIGN KEY (studentID) REFERENCES registration(studentID),
-  FOREIGN KEY (testID) REFERENCES test(testID)
+  FOREIGN KEY (mind_assesment_ID) REFERENCES mind_assesment(mind_assesment_ID)
 );
 
-CREATE TABLE valid_answers (
-  valid_answers_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE user_analytical_assesment(
+  user_analytical_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  studentID int,
+  analytical_assesment_ID int,
+  answer_2 int(5), NOT NULL,
+  FOREIGN KEY (studentID) REFERENCES registration(studentID),
+  FOREIGN KEY (analytical_assesment_ID) REFERENCES analytical_assesment(analytical_assesment_ID)
+);
+
+CREATE TABLE answers_mind (
+  answers_mind_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   valid_choice varchar(1) NOT NULL,
   testID int,
   FOREIGN KEY (testID) REFERENCES test(testID)
