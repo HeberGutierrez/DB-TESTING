@@ -37,6 +37,7 @@ CREATE TABLE test (
   FOREIGN KEY (studentID) REFERENCES registration (studentID)
 );
 
+
 CREATE TABLE answers (
   answersID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   right_answer char (50) NOT NULL,

@@ -12,6 +12,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 //MYSQL CONNECTION
+
 const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
