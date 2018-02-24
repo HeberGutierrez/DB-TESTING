@@ -10,6 +10,23 @@ var passport = require('passport');
 var LocalStragety = require('passport-local');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+
+//MYSQL CONNECTION
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  database: 'application_form'
+});
+connection.connect((err) => {
+  if (err) throw err;
+  console.log('Connected!');
+});
+
+
+
+
 mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
