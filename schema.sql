@@ -32,28 +32,38 @@ CREATE TABLE registration (
 
 CREATE TABLE test (
   testID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  answer int(150) NOT NULL,
-  studentID int,
-  FOREIGN KEY (studentID) REFERENCES registration (studentID)
+  mind varchar(255) NOT NULL,
+  analyticial varchar(255) NOT NULL,
+  reading varchar(225) NOT NULL,
+  writing varchar(225) NOT NULL
 );
 
-
-CREATE TABLE answers (
-  answersID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  right_answer char (50) NOT NULL,
-  type char(25),
+CREATE TABLE user_answers(
+  user_answers_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  studentID int,
+  FOREIGN KEY (studentID) REFERENCES registration(studentID),
   testID int,
   FOREIGN KEY (testID) REFERENCES test(testID)
 );
 
-CREATE TABLE comparison (
-  joinID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  studentID int,
+CREATE TABLE valid_answers (
+  valid_answers_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   testID int,
-  answersID int,
-  FOREIGN KEY (studentID) REFERENCES registration(studentID),
   FOREIGN KEY (testID) REFERENCES test(testID),
-  FOREIGN KEY (answersID) REFERENCES answers(answersID)
+  valid_choice varchar(1) NOT NULL,
+);
+
+
+CREATE TABLE student_test (
+  student_test_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  studentID int,
+  FOREIGN KEY (studentID) REFERENCES registration(studentID),
+  valid_answers_ID int,
+  FOREIGN KEY (valid_answers_ID) REFERENCES valid_answers(valid_answers_ID),
+  user_answers_ID int,
+  FOREIGN KEY (user_answers_ID) REFERENCES user_answers(user_answers_ID),
+  testID int,
+  FOREIGN KEY (testID) REFERENCES test(testID),
 );
 
 INSERT INTO username (email, password) VALUES ("daninor769@hanmail.net", "hollywood");
