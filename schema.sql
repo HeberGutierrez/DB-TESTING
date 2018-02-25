@@ -67,7 +67,7 @@ CREATE TABLE user_mind_assesment(
   user_mind_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   studentID int,
   mind_assesment_ID int,
-  answer int(5), NOT NULL,
+  answer int(5) NOT NULL,
   FOREIGN KEY (studentID) REFERENCES registration(studentID),
   FOREIGN KEY (mind_assesment_ID) REFERENCES mind_assesment(mind_assesment_ID)
 );
@@ -76,7 +76,7 @@ CREATE TABLE user_analytical_assesment(
   user_analytical_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   studentID int,
   analytical_assesment_ID int,
-  answer_2 varchar(1), NOT NULL,
+  answer_2 varchar(1) NOT NULL,
   FOREIGN KEY (studentID) REFERENCES registration(studentID),
   FOREIGN KEY (analytical_assesment_ID) REFERENCES analytical_assesment(analytical_assesment_ID)
 );
@@ -85,7 +85,7 @@ CREATE TABLE user_reading_assesment(
   user_reading_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   studentID int,
   reading_assesment_ID int,
-  answer_3 varchar(1), NOT NULL,
+  answer_3 varchar(1) NOT NULL,
   FOREIGN KEY (studentID) REFERENCES registration(studentID),
   FOREIGN KEY (reading_assesment_ID) REFERENCES reading_assesment(reading_assesment_ID)
 );
@@ -94,7 +94,7 @@ CREATE TABLE user_writing_assesment(
   user_writing_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   studentID int,
   writing_assesment_ID int,
-  answer_4 varchar(255), NOT NULL,
+  answer_4 varchar(255) NOT NULL,
   FOREIGN KEY (studentID) REFERENCES registration(studentID),
   FOREIGN KEY (writing_assesment_ID) REFERENCES writing_assesment(writing_assesment_ID)
 );
@@ -146,7 +146,7 @@ INSERT INTO mind_assesment(question, testID) VALUES ("Am the life of the party."
 INSERT INTO mind_assesment(question, testID) VALUES ("Feel little concern for others.", 1);
 INSERT INTO mind_assesment(question, testID) VALUES ("Am always prepared.", 1);
 INSERT INTO mind_assesment(question, testID) VALUES ("Get stressed out easily.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Have a rich vocabulary.", 1;
+INSERT INTO mind_assesment(question, testID) VALUES ("Have a rich vocabulary.", 1);
 INSERT INTO mind_assesment(question, testID) VALUES ("Don't talk a lot", 1);
 INSERT INTO mind_assesment(question, testID) VALUES ("Am interested in people", 1);
 INSERT INTO mind_assesment(question, testID) VALUES ("Leave my belongings around.", 1);
