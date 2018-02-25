@@ -13,8 +13,7 @@ var mongoose = require('mongoose');
 
 //MYSQL CONNECTION
 
-const mysql = require('mysql');
-const connection = mysql.createConnection({
+/*/const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
@@ -23,7 +22,7 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
   if (err) throw err;
   console.log('Connected!');
-});
+});/*/
 
 
 
@@ -65,14 +64,14 @@ app.use(flash());
 // Express Validator
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
-    var namespace = param.slpit('.')
-    , root = namespace.shit()
-    , forParam = root;
+    var namespace = param.split('.')
+    , root = namespace.shift()
+    , fromParam = root;
     while(namespace.length) {
       fromParam += '[' + namespace.shift() + ']'
     }
     return {
-      param : formParam,
+      param : fromParam,
       msg : msg,
       value : value
     };
