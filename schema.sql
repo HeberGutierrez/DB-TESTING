@@ -76,27 +76,62 @@ CREATE TABLE user_analytical_assesment(
   user_analytical_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   studentID int,
   analytical_assesment_ID int,
-  answer_2 int(5), NOT NULL,
+  answer_2 varchar(1), NOT NULL,
   FOREIGN KEY (studentID) REFERENCES registration(studentID),
   FOREIGN KEY (analytical_assesment_ID) REFERENCES analytical_assesment(analytical_assesment_ID)
 );
 
-CREATE TABLE answers_mind (
-  answers_mind_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  valid_choice varchar(1) NOT NULL,
-  testID int,
-  FOREIGN KEY (testID) REFERENCES test(testID)
+CREATE TABLE user_reading_assesment(
+  user_reading_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  studentID int,
+  reading_assesment_ID int,
+  answer_3 varchar(1), NOT NULL,
+  FOREIGN KEY (studentID) REFERENCES registration(studentID),
+  FOREIGN KEY (reading_assesment_ID) REFERENCES reading_assesment(reading_assesment_ID)
 );
 
-CREATE TABLE student_test (
-  student_test_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE user_writing_assesment(
+  user_writing_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   studentID int,
+  writing_assesment_ID int,
+  answer_4 varchar(255), NOT NULL,
   FOREIGN KEY (studentID) REFERENCES registration(studentID),
-  valid_answers_ID int,
-  FOREIGN KEY (valid_answers_ID) REFERENCES valid_answers(valid_answers_ID),
-  user_answers_ID int,
+  FOREIGN KEY (writing_assesment_ID) REFERENCES writing_assesment(writing_assesment_ID)
+);
+
+CREATE TABLE answers_mind_assesment (
+  answers_mind_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  valid_choice varchar(5) NOT NULL,
+  mind_assesment_ID int,
+  FOREIGN KEY (mind_assesment_ID) REFERENCES mind_assesment(mind_assesment_ID)
+);
+
+CREATE TABLE answers_analytical_assesment (
+  answers_analytical_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  valid_choice_2 varchar(5) NOT NULL,
+  analytical_assesment_ID int,
+  FOREIGN KEY (analytical_assesment_ID) REFERENCES analytical_assesment(analytical_assesment_ID)
+);
+
+CREATE TABLE answers_reading_assesment (
+  answers_reading_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  valid_choice_3 varchar(5) NOT NULL,
+  reading_assesment_ID int,
+  FOREIGN KEY (reading_assesment_ID) REFERENCES reading_assesment(reading_assesment_ID)
+);
+
+CREATE TABLE answers_writing_assesment (
+  answers_writing_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  valid_choice varchar(5) NOT NULL,
+  writing_assesment_ID int,
+  FOREIGN KEY (writing_assesment_ID) REFERENCES writing_assesment(writing_assesment_ID)
+);
+
+CREATE TABLE user_test (
+  user_test_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  studentID int,
   testID int,
-  FOREIGN KEY (user_answers_ID) REFERENCES user_answers(user_answers_ID),
+  FOREIGN KEY (studentID) REFERENCES registration(studentID),
   FOREIGN KEY (testID) REFERENCES test(testID)
 );
 
