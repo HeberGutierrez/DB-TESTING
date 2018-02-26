@@ -37,7 +37,7 @@ router.post('/register', function(req, res){
 
   req.checkBody('name', 'Name is require').notEmpty();
   req.checkBody('last_name', 'Last Name is require').notEmpty();
-  req.checkBody('birthdate',).notEmpty();
+  req.checkBody('birthdate', 'Birthdate is require').notEmpty();
   req.checkBody('email', 'Email is require').notEmpty();
   req.checkBody('email', 'Email is not valid').isEmail();
   req.checkBody('password', 'Password is require').notEmpty();
@@ -63,4 +63,8 @@ router.post('/register', function(req, res){
       console.log('PASSED')
     }
 });
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/')
+})
 module.exports = router;
