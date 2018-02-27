@@ -7,7 +7,6 @@ var connect = mysql.createConnection({
   database: 'application_form'
 });
 
-var register
 
 var insertData =function(email, password, name, last_name, nickname, phone, birthdate, gender, nationality, identification, education_level, coding_experience, personal_reference, holacode_discovery, commitment, callback){
   connect.query('INSERT INTO registration (email, password, name, last_name, nickname, phone, birthdate, gender, nationality, identification, education_level, coding_experience, personal_reference, holacode_discovery, commitment) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
@@ -71,3 +70,4 @@ var insertData =function(email, password, name, last_name, nickname, phone, birt
 //   }
 // })
 // };
+modules.exports = insertData;
