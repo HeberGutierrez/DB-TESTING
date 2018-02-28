@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS application_form;
+DROP DATABASE IF EXISTS test;
 
-CREATE DATABASE application_form;
+CREATE DATABASE test;
 
-USE application_form;
+USE test;
 
 CREATE TABLE username (
   userID int NOT NULL AUTO_INCREMENT,
@@ -30,165 +30,35 @@ CREATE TABLE registration (
   commitment varchar(30) NOT NULL
 );
 
-CREATE TABLE test (
-  testID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  test_type varchar(50)
+CREATE TABLE reading_assesment (
+  readingID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  r_questions varchar(500) NOT NULL
 );
 
- CREATE TABLE mind_assesment (
-   mind_assesment_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   question varchar(255) NOT NULL,
-   testID int,
-   FOREIGN KEY (testID) REFERENCES test(testID)
- );
+INSERT INTO reading_assesment(r_questions) VALUES ("Which of the following best describes the organization of this passage?");
+INSERT INTO reading_assesment(r_questions) VALUES ("The passage discusses all of the following solutions to password fatigue EXCEPT");
+INSERT INTO reading_assesment(r_questions) VALUES ("As used in paragraph 3, which is the best synonym for migrate?");
+INSERT INTO reading_assesment(r_questions) VALUES ("According to the passage, SSO authentication software may be safer than password management software because I. stolen personal computers contain passwords memorized by a user’s web browser II. if a user of password management software forgets his or her login credentials, the user can no longer access any of the applications protected by the password III. hackers who access password management software can gain access to all of the applications protected by that password");
+INSERT INTO reading_assesment(r_questions) VALUES ("Which of the following statements from the passage represents an opinion, as opposed to a fact?");
+INSERT INTO reading_assesment(r_questions) VALUES ("In paragraph 6, the author notes that “the use of biometrics raises ethical questions concerning privacy. Which of the following situations could be used as an example to illustrate this point?");
+INSERT INTO reading_assesment(r_questions) VALUES ("The author’s tone in the final paragraph can best be described as");
 
- CREATE TABLE analytical_assesment (
-  analytical_assesment_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   testID int,
-   question_2 varchar(255) NOT NULL,
-   FOREIGN KEY (testID) REFERENCES test(testID)
- );
-
- CREATE TABLE reading_assesment (
-   reading_assesment_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   testID int,
-   question_3 varchar(255) NOT NULL,
-   FOREIGN KEY (testID) REFERENCES test(testID)
- );
-
- CREATE TABLE writing_assesment (
-   writing_assesment_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   testID int,
-   question_4 varchar(255) NOT NULL,
-   FOREIGN KEY (testID) REFERENCES test(testID)
- );
-
-CREATE TABLE user_mind_assesment(
-  user_mind_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  studentID int,
-  mind_assesment_ID int,
-  answer int(5) NOT NULL,
-  FOREIGN KEY (studentID) REFERENCES registration(studentID),
-  FOREIGN KEY (mind_assesment_ID) REFERENCES mind_assesment(mind_assesment_ID)
+CREATE TABLE readingAsnswers (
+  readingAsnswersID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  readingID int,
+  choices varchar(1500),
+  correctAnswer int(1),
+  FOREIGN KEY (readingID) REFERENCES reading_assesment(readingID)
 );
 
-CREATE TABLE user_analytical_assesment(
-  user_analytical_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  studentID int,
-  analytical_assesment_ID int,
-  answer_2 varchar(1) NOT NULL,
-  FOREIGN KEY (studentID) REFERENCES registration(studentID),
-  FOREIGN KEY (analytical_assesment_ID) REFERENCES analytical_assesment(analytical_assesment_ID)
-);
-
-CREATE TABLE user_reading_assesment(
-  user_reading_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  studentID int,
-  reading_assesment_ID int,
-  answer_3 varchar(1) NOT NULL,
-  FOREIGN KEY (studentID) REFERENCES registration(studentID),
-  FOREIGN KEY (reading_assesment_ID) REFERENCES reading_assesment(reading_assesment_ID)
-);
-
-CREATE TABLE user_writing_assesment(
-  user_writing_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  studentID int,
-  writing_assesment_ID int,
-  answer_4 varchar(255) NOT NULL,
-  FOREIGN KEY (studentID) REFERENCES registration(studentID),
-  FOREIGN KEY (writing_assesment_ID) REFERENCES writing_assesment(writing_assesment_ID)
-);
-
-CREATE TABLE answers_mind_assesment (
-  answers_mind_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  valid_choice varchar(5) NOT NULL,
-  mind_assesment_ID int,
-  FOREIGN KEY (mind_assesment_ID) REFERENCES mind_assesment(mind_assesment_ID)
-);
-
-CREATE TABLE answers_analytical_assesment (
-  answers_analytical_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  valid_choice_2 varchar(5) NOT NULL,
-  analytical_assesment_ID int,
-  FOREIGN KEY (analytical_assesment_ID) REFERENCES analytical_assesment(analytical_assesment_ID)
-);
-
-CREATE TABLE answers_reading_assesment (
-  answers_reading_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  valid_choice_3 varchar(5) NOT NULL,
-  reading_assesment_ID int,
-  FOREIGN KEY (reading_assesment_ID) REFERENCES reading_assesment(reading_assesment_ID)
-);
-
-CREATE TABLE answers_writing_assesment (
-  answers_writing_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  valid_choice varchar(5) NOT NULL,
-  writing_assesment_ID int,
-  FOREIGN KEY (writing_assesment_ID) REFERENCES writing_assesment(writing_assesment_ID)
-);
-
-CREATE TABLE user_test (
-  user_test_ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  studentID int,
-  testID int,
-  FOREIGN KEY (studentID) REFERENCES registration(studentID),
-  FOREIGN KEY (testID) REFERENCES test(testID)
-);
-
-INSERT INTO username (email, password) VALUES ("daninor769@hanmail.net", "hollywood");
-INSERT INTO registration (email, password, name, last_name, nickname, phone, birthdate, gender, nationality, identification, education_level, coding_experience, personal_reference, holacode_discovery, commitment) VALUES ("juanitabanana@anana.fr", "anana", "Juanita", "Banana", "Chanita", 559143346752, '1997-05-03', "female", "Irken", "alien", "some university", "nothing", "nothing", "friend", "yes");
-INSERT INTO registration (email, password, name, last_Name, nickname, phone, birthdate, gender, nationality, identification, education_level, coding_experience, personal_reference, holacode_discovery, commitment) VALUES ("daninor769@hanmail.net", "hollywood", "Dani", "Noriega", "Dani", 55916008800, '2007-02-05', "prefer not to say", "Mexican", "dreamer", "some high school", "basic", "Bob", "flyer", "yes");
-INSERT INTO test(test_type) VALUES ("mind assesment");
-INSERT INTO test(test_type) VALUES ("analytical assesment");
-INSERT INTO test(test_type) VALUES ("reading comprehension");
-INSERT INTO test(test_type) VALUES ("reading comprehension:open questions");
-INSERT INTO mind_assesment(question, testID) VALUES ("Am the life of the party.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Feel little concern for others.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am always prepared.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Get stressed out easily.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Have a rich vocabulary.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Don't talk a lot", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am interested in people", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Leave my belongings around.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am relaxed most of the time.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Have difficulty understanding abstract ideas.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Feel comfortable around people.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Insult people.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Pay attention to details.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Worry about things.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Have a vivid imagination.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Keep in the background.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Sympathize with others' feelings.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Make a mess of things.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Seldom feel blue.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am not interested in abstract ideas.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Start conversations.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am not interested in other people's problems.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Get chores done right away", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am easily disturbed.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Have excellent ideas.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Have little to say.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Have a soft heart", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Often forget to put things back in their proper place.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Get upset easily.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Get upset easily.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Talk to a lot of different people at parties.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am not really interested in others.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Like order.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Change my mood a lot.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am quick to understand things.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Don't like to draw attention to myself.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Take time out for others.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Shirk my duties.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Have frequent mood swings.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Use difficult words.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Don't mind being the center of attention.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Feel others' emotions.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Follow a schedule.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Get irritated easily.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Spend time reflecting on things.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am quiet around strangers.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Make people feel at ease.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am exacting in my work.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am exacting in my work.", 1);
-INSERT INTO mind_assesment(question, testID) VALUES ("Am full of ideas.", 1);
+INSERT INTO readingAsnswers(readingID, choices, correctAnswer) VALUES (1, 'The passage organizes ideas in order of increasing importance.\n The author presents an argument and then uses evidence to dismiss opposing views.\n The author explains a problem, explores solutions, and then dismisses these solutions as inadequate.\n The author explains a problem and then persuades readers to agree with his or her solution to the problem.\n The author explains a problem, contextualizes the problem, and ultimately dismisses it as an unnecessary concern.\n', 2);
+INSERT INTO readingAsnswers(readingID, choices, correctAnswer) VALUES (2, 'handwritten lists.\n voice-recognition software.\n keePass.\n using very simple passwords\n intelligent encryption\n', 4);
+INSERT INTO readingAsnswers(readingID, choices, correctAnswer) VALUES (3, 'predict.\n postpone.\n investigate.\n lessen.\n complicate.\n', 3);
+INSERT INTO readingAsnswers(readingID, choices, correctAnswer) VALUES(4, 'I only.\n II only.\n I and II only.\n II and III only\n I, II and III\n', 4);
+INSERT INTO readingAsnswers(readingID, choices, correctAnswer) VALUES(5,'“For people who use email or other internet applications at work, the number of required username/password combinations may surpass 30."\n “The feeling of frustration that results from maintaining a memorized list of login credentials has grown so prevalent that it actually has a name: password fatigue.”\n “Having to remember so many different passwords is irritating, but it can also be dangerous.”\n “Additionally, recovering a forgotten password is only a temporary solution; it does not address the larger problem of password fatigue.”\n “The problems associated with SSO, password management software, and biometrics continue to stimulate software engineers and computer security experts to search for the cure to password fatigue.”',2);
+INSERT INTO readingAsnswers(readingID, choices, correctAnswer) VALUES(6, 'A thief steals a personal computer with password management software and gains access to private email accounts, credit card numbers, and bank statements.\n
+  An employee at a company uses a voice recognition system to log in to his computer, only to be called away by his boss. While he is away from the computer but still logged in, another employee snoops on his computer and reads personal email correspondence.\n
+  A computer hacker gains access to a system that uses SSO software by cracking the password, thus gaining private access to all linked accounts.\n
+  A company that employs fingerprint identification security software turns over its database of fingerprints to the local police department when a violent crime occurs on its grounds.\n
+  Even when a person is on password-protected websites, an internet browser tracks the person’s internet use and collects information in order to tailor advertisements to his or her interests.', 3);
+INSERT INTO readingAsnswers(readingID, choices, correctAnswer) VALUES(7, 'animated\n resigned\n confused\n hopeful\n depressed', 1);
