@@ -20,54 +20,31 @@ var insertData =function(email, password, name, last_name, nickname, phone, birt
   }
 })
 };
+var userWrittenAnswer = function(studentID, writingAnswer){
+  connect.query('INSERT INTO user_writing_assesment (studentID, writingAnswer) VALUES (?,?)',
+[studentID, writingAnswer] =>{
+  if(error){
+    console.log('error inserting user written answer');
+    callback(err, null)
+  }else {
+    console.log('answer to open questions stored', results);
+    callback(null, results)
+  }
+})
+};
+var userMindAnswer = function(studentID, mindAnswer){
+  connect.query('INSERT INTO user_mind_assesment (studentID, mindAnswer) VALUES (?,?)',
+[studentID, mindAnswer]=>{
+  if(error){
+    console.log('error inserting mind assesment answers');
+    callback(err, null);
+  }else {
+    console.log('success mind assesment answer is:', results);
+    callback(null, results);
+  }
+})
+};
 
-// var insertAnswerMind =function(answer, callback){
-//   connect.query('INSERT INTO test (answer, type) VALUES (?, mind)', [answer], (err, results)=>{
-//     if(err){
-//       console.log("insert answer error in mind assesment");
-//       callback(err, null)
-//     } else {
-//       callback(null, results)
-//       console.log("answer taken from mind assesment");
-//     }
-//   })
-// };
-//
-// var insertAnswerAnalytical = function(answer, callback){
-//   connect.query('INSERT INTO test (answer, type) VALUES (?, analytical)',
-// [answer], (err, results)=>{
-//   if(err){
-//     console.log('error inserting answer in analytical test');
-//     callback(err, null);
-//   } else {
-//     console.log('success answered analytical test');
-//     callback(null, results);
-//   }
-// })
-// };
-// var insertAnswerReading = function(answer, callback){
-//   connect.query('INSERT INTO test (answer, type) VALUES (?, reading)',
-// [answer], (err, results)=>{
-//   if(err){
-//     console.log('error inserting answer in reading test');
-//     callback(err, null);
-//   } else {
-//     console.log('success answered reading test');
-//     callback(null, results)
-//   }
-// })
-// };
-//
-// var insertAnswerComprehension = function(answer, callback){
-//   connect.query('INSERT INTO test (answer, type) VALUES (?, comprehension)',
-// [answer], (err, results)=>{
-//   if(err){
-//     console.log('error inserting answer in comprehension test');
-//     callback(err, null);
-//   } else {
-//     console.log('success answered comprehension test');
-//     callback(null, results);
-//   }
-// })
-// };
+modules.exports = userMindAnswer;
+modules.exports = userWrittenAnswer;
 modules.exports = insertData;
