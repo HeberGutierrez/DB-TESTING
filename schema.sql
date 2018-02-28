@@ -75,7 +75,9 @@ INSERT INTO writing_assesment(w_questions) VALUES ("Make some inferences about t
 CREATE TABLE user_writing_assesment(
   user_writing_assesmentID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   studentID int,
+  writingID int,
   writingAnswer varchar(1500) NOT NULL,
+  FOREIGN KEY (writingID) REFERENCES writing_assesment(writingID),
   FOREIGN KEY (studentID) REFERENCES registration(studentID)
 );
 
@@ -138,7 +140,9 @@ INSERT INTO mind_assesment(m_questions) VALUES ("Am full of ideas.");
 CREATE TABLE user_mind_assesment(
   user_mind_assesmentID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   studentID int,
+  mindID,
   mindAnswer int(5) NOT NULL,
+  FOREIGN KEY (mindID) REFERENCES mind_assesment(writingID),
   FOREIGN KEY (studentID) REFERENCES registration(studentID)
 );
 
