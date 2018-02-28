@@ -3,7 +3,7 @@ var allQuestionsAnalytical = [
   {
     question: "Gabriela is jumping rope. A) Gabriela is on the jumping rope team during the summer. b) Gabriela is in the gym c) Jumping rope occurs in the gym during the summer. d) All the kids in the gym are jumping rope.",
     choices: ["A and B", "B and D", "C and D", "D and A", "I don't know"],
-    correctAnswer: 2 //I don't know counts as 0.5 points
+    correctAnswer: 2
   },
   {
     question: "Jorge runs faster than Gabe. Lily runs faster than Jorge. Gabe runs faster than Lily. Who runs the fastest? ",
@@ -27,7 +27,7 @@ var allQuestionsAnalytical = [
   },
   {
     question:"Look carefully at the sequence of symbols to find the patter. Select correct pattern"
-    image:
+    image: "https://drive.google.com/file/d/1lgvi5pYxUMtFcvus_6F2OMQVo2Zayaxo/view?usp=sharing"
     choices: ["1", "2", "3", "4", "I don't know"],
     correctAnswer: 3
   },
@@ -38,7 +38,7 @@ var allQuestionsAnalytical = [
   },
   {
     question: "Look carefully at the sequence of symbols to find the pattern. Select correct pattern.",
-    image:
+    image: "https://drive.google.com/file/d/1QUs8fOJx27pEgZICTYKIgBUwnkOPbmLB/view?usp=sharing"
     choices: ["1", "2", "3", "4", "I don't know"],
     correctAnswer: 2
   },
@@ -49,7 +49,7 @@ var allQuestionsAnalytical = [
   },
   {
     question: "In a class of 78 students 41 are taking French, 22 are taking German. Of the students taking French or German, 9 are taking both courses. How many students are not enrolled in either course?",
-    choices:["6", "15", "24", "33", "54"],
+    choices:["6", "15", "24", "33", "54", "I don't know"],
     correctAnswer: 2
   },
   {
@@ -59,7 +59,7 @@ var allQuestionsAnalytical = [
   },
   {
     question: "How many times do the hands of a clock overlap in 24 hours?",
-    choices: ["24", "12", "22", "16"],
+    choices: ["24", "12", "22", "16", "I don't know"],
     correctAnswer: 2
   },
   {
@@ -159,17 +159,17 @@ var allQuestionsAnalytical = [
   },
   {
     question: "After being dropped a certain ball always bounces back to 2/5 of the height of its previous bounce. After the first bounce it reaches a height of 125 inches. How high (in inches) will it reach after its fourth bounce?",
-    choices: ["20", "15","8", "5", "3.2"],
+    choices: ["20", "15","8", "5", "3.2", "I don't know"],
     correctAnswer: 2
   },
   {
     question: "Count the number of triangles and squares in the given figure",
+    image: "https://drive.google.com/file/d/1W8JgKGKw0oiwcrFH4TukIakoZnilgOV9/view?usp=sharing"
     choices: ["36 triangles, 7 squares", "38 triangles, 9 squares", "40 triangles, 7 squares", "42 triangles, 9 squares", "I don't know"],
     correctAnswer: 2
   },
   {
     question: "At the baseball game, Henry was sitting in seat 253. Marla was sitting to the right of Henry in seat 254. In the seat to the left of Henry was George. Inez was sitting to the left of George. Which seat is Inez sitting in?",
-    image:
     choices: ["251", "254", "255", "256", "I don't know"],
     correctAnswer: 0
   },
@@ -210,7 +210,7 @@ var allQuestionsAnalytical = [
   },
   {
     question: "Look carefully at the sequence of symbols to find the pattern. Select correct pattern. ",
-    image:
+    image: "https://drive.google.com/file/d/1oT73bdsZxVienKLQKiVXRNoFmaIojeFQ/view?usp=sharing"
     choices: ["1", "2", "3", "4", "I don't know"],
     correctAnswer: 2
   },
@@ -221,7 +221,7 @@ var allQuestionsAnalytical = [
   },
   {
     question: "Find the number of triangles in the given figure",
-    image:
+    image: "https://drive.google.com/file/d/1PfLBCAk7ix42PFxq-Es7ECsaCLbfxOsH/view?usp=sharing"
     choices: ["18", "20", "24", "27", "I don't know"],
     correctAnswer: 2
   },
