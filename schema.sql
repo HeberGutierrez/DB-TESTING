@@ -78,3 +78,66 @@ CREATE TABLE user_writing_assesment(
   writingAnswer varchar(1500) NOT NULL,
   FOREIGN KEY (studentID) REFERENCES registration(studentID)
 );
+
+CREATE TABLE mind_assesment(
+  mindID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  m_questions varchar(255) NOT NULL
+);
+
+INSERT INTO mind_assesment(m_questions) VALUES ("Am the life of the party.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Feel little concern for others.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am always prepared.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Get stressed out easily.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Have a rich vocabulary.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Don't talk a lot");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am interested in people");
+INSERT INTO mind_assesment(m_questions) VALUES ("Leave my belongings around.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am relaxed most of the time.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Have difficulty understanding abstract ideas.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Feel comfortable around people.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Insult people.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Pay attention to details.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Worry about things.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Have a vivid imagination.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Keep in the background.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Sympathize with others' feelings.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Make a mess of things.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Seldom feel blue.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am not interested in abstract ideas.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Start conversations.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am not interested in other people's problems.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Get chores done right away");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am easily disturbed.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Have excellent ideas.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Have little to say.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Have a soft heart");
+INSERT INTO mind_assesment(m_questions) VALUES ("Often forget to put things back in their proper place.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Get upset easily.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Get upset easily.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Talk to a lot of different people at parties.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am not really interested in others.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Like order.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Change my mood a lot.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am quick to understand things.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Don't like to draw attention to myself.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Take time out for others.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Shirk my duties.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Have frequent mood swings.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Use difficult words.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Don't mind being the center of attention.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Feel others' emotions.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Follow a schedule.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Get irritated easily.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Spend time reflecting on things.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am quiet around strangers.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Make people feel at ease.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am exacting in my work.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am exacting in my work.");
+INSERT INTO mind_assesment(m_questions) VALUES ("Am full of ideas.");
+
+CREATE TABLE user_mind_assesment(
+  user_mind_assesmentID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  studentID int,
+  mindAnswer int(5) NOT NULL,
+  FOREIGN KEY (studentID) REFERENCES registration(studentID)
+);
