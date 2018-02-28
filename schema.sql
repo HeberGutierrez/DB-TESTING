@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS test;
+DROP DATABASE IF EXISTS application_form;
 
-CREATE DATABASE test;
+CREATE DATABASE application_form;
 
-USE test;
+USE application_form;
 
 CREATE TABLE username (
   userID int NOT NULL AUTO_INCREMENT,
@@ -140,4 +140,10 @@ CREATE TABLE user_mind_assesment(
   studentID int,
   mindAnswer int(5) NOT NULL,
   FOREIGN KEY (studentID) REFERENCES registration(studentID)
+);
+
+CREATE TABLE analytical_assesment(
+  analyticalID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  a_questions varchar(500) NOT NULL,
+  image nvarchar(500)
 );
