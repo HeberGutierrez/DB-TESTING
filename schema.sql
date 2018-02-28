@@ -62,3 +62,19 @@ INSERT INTO readingAsnswers(readingID, choices, correctAnswer) VALUES(6, 'A thie
   A company that employs fingerprint identification security software turns over its database of fingerprints to the local police department when a violent crime occurs on its grounds.\n
   Even when a person is on password-protected websites, an internet browser tracks the person’s internet use and collects information in order to tailor advertisements to his or her interests.', 3);
 INSERT INTO readingAsnswers(readingID, choices, correctAnswer) VALUES(7, 'animated\n resigned\n confused\n hopeful\n depressed', 1);
+
+CREATE TABLE writing_assesment(
+  writingID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  w_questions varchar(500) NOT NULL
+);
+
+INSERT INTO writing_assesment(w_questions) VALUES ("Based on the information in the passage, explain SSO in your own words. What does it stand for? What does it do? What are its advantages and disadvantages? What are some alternatives to SSO?");
+INSERT INTO writing_assesment(w_questions) VALUES ("Of the password solutions referenced in the passage, which sounds most appealing to you? How do you currently keep track of all of your passwords? Do you think you should switch to another method? Why or why not?");
+INSERT INTO writing_assesment(w_questions) VALUES ("Make some inferences about the author. What do you think is his or her academic or professional background? What type of audience do you think he or she is trying to reach? Which password solution do you think he or she most prefers? Why?");
+
+CREATE TABLE user_writing_assesment(
+  user_writing_assesmentID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  studentID int,
+  writingAnswer varchar(1500) NOT NULL,
+  FOREIGN KEY (studentID) REFERENCES registration(studentID)
+);
