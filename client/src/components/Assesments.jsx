@@ -7,5 +7,4 @@ var Assesments =()=>(
    <div><h5>Reading Assesment</h5></div>
  </div>
 );
-
-export default Assesment;
+export default Assesments;
