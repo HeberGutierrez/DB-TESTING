@@ -1,11 +1,13 @@
 var sql = require("mysql");
 var bcrypt = require("bcryptjs");
+
 var connect = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
   database: 'application_form'
 });
+
 var selectReadingQ =function(callback){
   connect.query('SELECT * FROM reading_assesment', function(err, results, fields){
     if(err){
@@ -20,14 +22,37 @@ var selectReadingQ =function(callback){
 var selectWrittenQ = function(callback){
   connect.query('SELECT * FROM writing_assesment', function(err, results, fields){
     if(err){
-      console.log('witten question shoing err');
+      console.log('witten question showing err');
       callback(err, null);
     }else {
       console.log('written questions');
       callback(null, results);
     }
   })
-}
+};
+var selectMindQ = function(callback){
+  connect.query('SELECT * FROM mind_assesment', function(err, results, fields){
+    if(err){
+      console.log('mind assesment showing error');
+      callback(err, null);
+    }else {
+      console.log('showing mind assesment questions');
+      callback(null, results);
+    }
+  })
+};
+var selectAnalyticalQ = function(callback){
+  connect.query('SELECT * FROM analytical_assesment', function(err, results, fields){
+    if(err){
+      console.log('analytical assesment question err');
+      callback(err, null);
+    } else {
+      console.log('showing analytical assesment questions');
+      callback(null, results);
+    }
+  })
+};
+
 var insertData =function(email, password, name, last_name, nickname, phone, birthdate, gender, nationality, identification, education_level, coding_experience, personal_reference, holacode_discovery, commitment, callback){
   connect.query('INSERT INTO registration (email, password, name, last_name, nickname, phone, birthdate, gender, nationality, identification, education_level, coding_experience, personal_reference, holacode_discovery, commitment) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
 [email, password, name, last_name, nickname, phone, birthdate, gender, nationality, identification, education_level, coding_experience, personal_reference, holacode_discovery, commitment], (err, results)=>{
@@ -41,9 +66,9 @@ var insertData =function(email, password, name, last_name, nickname, phone, birt
 })
 };
 
-var userWrittenAnswer = function(studentID, writingAnswer){
-  connect.query('INSERT INTO user_writing_assesment (studentID, writingAnswer) VALUES (?,?)',
-[studentID, writingAnswer] =>{
+var userWrittenAnswer = function(studentID, writingID, writingAnswer){
+  connect.query('INSERT INTO user_writing_assesment (studentID, writingID, writingAnswer) VALUES (?, ? ,?)',
+[studentID, writingID, writingAnswer] =>{
   if(error){
     console.log('error inserting user written answer');
     callback(err, null)
@@ -53,9 +78,9 @@ var userWrittenAnswer = function(studentID, writingAnswer){
   }
 })
 };
-var userMindAnswer = function(studentID, mindAnswer){
-  connect.query('INSERT INTO user_mind_assesment (studentID, mindAnswer) VALUES (?,?)',
-[studentID, mindAnswer]=>{
+var userMindAnswer = function(studentID, mindID, mindAnswer){
+  connect.query('INSERT INTO user_mind_assesment (studentID, mindID, mindAnswer) VALUES (?,?,?)',
+[studentID, mindID, mindAnswer]=>{
   if(error){
     console.log('error inserting mind assesment answers');
     callback(err, null);
@@ -65,7 +90,10 @@ var userMindAnswer = function(studentID, mindAnswer){
   }
 })
 };
-
+modules.exports = selectMindQ;
+modules.exports = selectReadingQ;
+modules.exports = selectWrittenQ;
+modules.exports = selectAnalyticalQ;
 modules.exports = userMindAnswer;
 modules.exports = userWrittenAnswer;
 modules.exports = insertData;
