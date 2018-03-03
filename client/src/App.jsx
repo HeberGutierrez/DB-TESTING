@@ -10,11 +10,13 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state= {
-      assesments:[]
+      assesments:[],
+      reading: []
     }
-    this.getAssesment = this.getAssesment.bind(this);
+    this.getMindAssesment = this.getMindAssesment.bind(this);
+    this.getReadingAssesment = this.getReadingAssesment.bind(this);
   }
-  getAssesment(){
+  getMindAssesment(){
     $.ajax({
       url:'/assesments',
       method: 'GET',
@@ -22,22 +24,48 @@ class App extends React.Component {
         this.setState({
           assesments: results
         })
+        console.log(results);
       },
       error: (err)=>{
         console.log('this is err', err)
       }
     });
   }
+  getReadingAssesment(){
+    $.ajax({
+      url:'/rAssesments',
+      method: 'GET',
+      success: (results)=>{
+        this.setState({
+          reading: results
+        })
+        console.log(results);
+      },
+      error: (err)=>{
+        console.log('this is err', err)
+      }
+    });
+  }
+
   componentDidMount(){
-    this.getAssesment();
+    this.getMindAssesment();
+    this.getReadingAssesment();
   }
   render(){
     return(<div>
+      <h1>Start your Assesments</h1>
+    <div>
     <Assesments assesments={this.state.assesments}/>
-    <h2>hello</h2>
+    </div>
+    <div>
     <Profile />
+    </div>
+    <div>
     <MindQuestions assesments={this.state.assesments}/>
-    <ReadingTest />
+    </div>
+    <div>
+    <ReadingTest assesments={this.state.reading}/>
+    </div>
     </div>
   )
   }

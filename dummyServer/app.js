@@ -18,7 +18,7 @@ app.get('/assesments', function(req, res){
   })
 });
 
-app.get('/assesments', function(req, res){
+app.get('/rAssesments', function(req, res){
   database.selectReadingQ((err, results)  => {
     if(err){
       console.log('error hitting reading assesment db');
