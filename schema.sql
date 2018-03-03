@@ -89,7 +89,7 @@ CREATE TABLE user_writing_assesment(
 
 CREATE TABLE mind_assesment(
   mindID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  m_questions varchar(255) NOT NULL
+  m_questions varchar(255) NOT NULL,
 );
 
 INSERT INTO mind_assesment(m_questions) VALUES ("Am the life of the party.");
@@ -156,6 +156,7 @@ CREATE TABLE analytical_assesment(
   analyticalID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   a_questions varchar(500) NOT NULL,
   image nvarchar(500)
+
 );
 
 INSERT INTO analytical_assesment(a_questions) VALUES ('Gabriela is jumping rope.\n A) Gabriela is on the jumping rope team during the summer.\n b) Gabriela is in the gym c) Jumping rope occurs in the gym during the summer.\n d) All the kids in the gym are jumping rope.');
