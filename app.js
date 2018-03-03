@@ -11,8 +11,26 @@ var LocalStragety = require('passport-local');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
+var app = express();
 //MYSQL CONNECTION
 
+<<<<<<< HEAD
+// const mysql = require('mysql');
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'root',
+//   database: 'application_form'
+// });
+// connection.connect((err) => {
+//   if (err) throw err;
+//   console.log('Connected!');
+// });
+
+// mongoose.connect('mongodb://localhost/loginapp');
+// var db = mongoose.connection;
+//
+=======
 /*/const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -30,10 +48,9 @@ connection.connect((err) => {
 mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
+>>>>>>> 6de175b3454999023b37a0b5e07d40f284ed894c
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
-var app = express();
 
 // View Endegine
 app.set('views', path.join(__dirname, 'views'));
