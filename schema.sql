@@ -31,12 +31,12 @@ CREATE TABLE profile (
 
 CREATE TABLE reading_assesment (
   readingID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  r_questions varchar(500),
-  option1 varchar(500) NOT NULL,
-  option2 varchar(500) NOT NULL,
-  option3 varchar(500) NOT NULL,
-  option4 varchar(500) NOT NULL,
-  option5 varchar(500) NOT NULL
+  r_questions varchar(500) NOT NULL,
+  option1 varchar(500),
+  option2 varchar(500),
+  option3 varchar(500),
+  option4 varchar(500),
+  option5 varchar(500)
 );
 INSERT INTO reading_assesment(r_questions, option1, option2, option3, option4, option5)
 VALUES ("Which of the following best describes the organization of this passage?",'The passage organizes ideas in order of increasing importance', 'The author presents an argument and then uses evidence to dismiss opposing views.', 'The author explains a problem, explores solutions, and then dismisses these solutions as inadequate.', 'The author explains a problem and then persuades readers to agree with his or her solution to the problem.', 'The author explains a problem, contextualizes the problem, and ultimately dismisses it as an unnecessary concern.');
@@ -73,9 +73,12 @@ CREATE TABLE writing_assesment(
   w_questions varchar(500) NOT NULL
 );
 
-INSERT INTO writing_assesment(w_questions) VALUES ("Based on the information in the passage, explain SSO in your own words. What does it stand for? What does it do? What are its advantages and disadvantages? What are some alternatives to SSO?");
-INSERT INTO writing_assesment(w_questions) VALUES ("Of the password solutions referenced in the passage, which sounds most appealing to you? How do you currently keep track of all of your passwords? Do you think you should switch to another method? Why or why not?");
-INSERT INTO writing_assesment(w_questions) VALUES ("Make some inferences about the author. What do you think is his or her academic or professional background? What type of audience do you think he or she is trying to reach? Which password solution do you think he or she most prefers? Why?");
+INSERT INTO writing_assesment(w_questions)
+VALUES ("Based on the information in the passage, explain SSO in your own words. What does it stand for? What does it do? What are its advantages and disadvantages? What are some alternatives to SSO?");
+INSERT INTO writing_assesment(w_questions)
+VALUES ("Of the password solutions referenced in the passage, which sounds most appealing to you? How do you currently keep track of all of your passwords? Do you think you should switch to another method? Why or why not?");
+INSERT INTO writing_assesment(w_questions)
+VALUES ("Make some inferences about the author. What do you think is his or her academic or professional background? What type of audience do you think he or she is trying to reach? Which password solution do you think he or she most prefers? Why?");
 
 CREATE TABLE user_writing_assesment(
   user_writing_assesmentID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
