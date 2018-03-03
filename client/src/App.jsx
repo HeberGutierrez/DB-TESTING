@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import data from './assName.js';
-import Assesments from './components/Assesments.jsx';
+import Profile from './components/Profile/Profile.jsx'
+import Assesments from './components/Assesments/Assesments.jsx';
+import ReadingTest from './components/Assesments/Reading/ReadingQList.jsx';
+import MindQuestions from './components/Assesments/Mind/MindQuestions.jsx'
 
 class App extends React.Component {
   constructor(props){
@@ -10,11 +12,11 @@ class App extends React.Component {
     this.state= {
       assesments:[]
     }
-    this.getReadingaAssesment = this.getReadingaAssesment.bind(this);
+    this.getAssesment = this.getAssesment.bind(this);
   }
-  getReadingaAssesment(){
+  getAssesment(){
     $.ajax({
-      url:'/readingassesments',
+      url:'/assesments',
       method: 'GET',
       success: (results)=>{
         this.setState({
@@ -22,17 +24,21 @@ class App extends React.Component {
         })
       },
       error: (err)=>{
-        console.log('err', err)
+        console.log('this is err', err)
       }
     });
   }
   componentDidMount(){
-    this.getReadingaAssesment();
+    this.getAssesment();
   }
   render(){
     return(<div>
     <h1>Start your Assesments!</h1>
     <Assesments assesments={this.state.assesments}/>
+    <h2>hello</h2>
+    <Profile />
+    <MindQuestions/>
+    <ReadingTest />
     </div>
   )
   }
