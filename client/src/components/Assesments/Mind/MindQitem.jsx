@@ -6,7 +6,7 @@ const MindQitem =(props)=>(
   <form>
   <div className="radio">
   <label>
-  <input type="radio" value="option1" checked={true} />
+  <input type="radio" value="option1"/>
               1
             </label>
           </div>

@@ -31,14 +31,13 @@ CREATE TABLE profile (
 
 CREATE TABLE reading_assesment (
   readingID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  r_questions varchar(500) NOT NULL,
+  r_questions varchar(500),
   option1 varchar(500) NOT NULL,
   option2 varchar(500) NOT NULL,
   option3 varchar(500) NOT NULL,
   option4 varchar(500) NOT NULL,
   option5 varchar(500) NOT NULL
 );
-
 INSERT INTO reading_assesment(r_questions, option1, option2, option3, option4, option5)
 VALUES ("Which of the following best describes the organization of this passage?",'The passage organizes ideas in order of increasing importance', 'The author presents an argument and then uses evidence to dismiss opposing views.', 'The author explains a problem, explores solutions, and then dismisses these solutions as inadequate.', 'The author explains a problem and then persuades readers to agree with his or her solution to the problem.', 'The author explains a problem, contextualizes the problem, and ultimately dismisses it as an unnecessary concern.');
 INSERT INTO reading_assesment(r_questions, option1, option2, option3, option4, option5)
@@ -89,7 +88,7 @@ CREATE TABLE user_writing_assesment(
 
 CREATE TABLE mind_assesment(
   mindID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  m_questions varchar(255) NOT NULL,
+  m_questions varchar(255) NOT NULL
 );
 
 INSERT INTO mind_assesment(m_questions) VALUES ("Am the life of the party.");
