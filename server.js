@@ -15,9 +15,10 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var configDB = require('./config/database.js');
+var database = require('./sql_Database/data.js');
 
-// configuration ===============================================================
-mongoose.connect(configDB.url); // connect to our database
+// configuration databases ===============================================================
+mongoose.connect(configDB.url); // connect to our database mongo
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -40,6 +41,55 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+
+// mysql config ================================================================
+app.use(express.static(__dirname + '/../client/dist'));
+
+app.get('/assesments', function(req, res){
+  database.selectMindQ((err, results) => {
+    if(err){
+      console.log("error hitting mind assesment db");
+      res.sendStatus(500);
+    }else {
+      console.log('works');
+      res.status(200).json(results);
+    }
+  })
+});
+
+app.get('/assesments', function(req, res){
+  database.selectReadingQ((err, results)  => {
+    if(err){
+      console.log('error hitting reading assesment db');
+      res.sendStatus(500);
+    }else {
+      res.status(200).json(results);
+    }
+  })
+});
+
+app.get('/assesments', function(req, res){
+  database.selectWrittenQ((err, results)  => {
+    if(err){
+      console.log('error hitting written assesment db');
+      res.sendStatus(500);
+    }else {
+      res.send(200).json(results);
+    }
+  })
+});
+
+app.get('/assesments', function(req, res){
+  database.selectAnalyticalQ((err, results)  => {
+    if (err) {
+      console.log('error hitting analytical assesment db');
+      res.sendStatus(500);
+    }else {
+      res.send(200).json(results);
+    }
+  })
+});
+
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
