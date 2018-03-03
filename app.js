@@ -14,6 +14,7 @@ var mongoose = require('mongoose');
 var app = express();
 //MYSQL CONNECTION
 
+<<<<<<< HEAD
 // const mysql = require('mysql');
 // const connection = mysql.createConnection({
 //   host: 'localhost',
@@ -29,6 +30,25 @@ var app = express();
 // mongoose.connect('mongodb://localhost/loginapp');
 // var db = mongoose.connection;
 //
+=======
+/*/const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  database: 'application_form'
+});
+connection.connect((err) => {
+  if (err) throw err;
+  console.log('Connected!');
+});/*/
+
+
+
+
+mongoose.connect('mongodb://localhost/loginapp');
+var db = mongoose.connection;
+
+>>>>>>> 6de175b3454999023b37a0b5e07d40f284ed894c
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -61,14 +81,14 @@ app.use(flash());
 // Express Validator
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
-    var namespace = param.slpit('.')
-    , root = namespace.shit()
-    , forParam = root;
+    var namespace = param.split('.')
+    , root = namespace.shift()
+    , fromParam = root;
     while(namespace.length) {
       fromParam += '[' + namespace.shift() + ']'
     }
     return {
-      param : formParam,
+      param : fromParam,
       msg : msg,
       value : value
     };
