@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+
 class Profile extends React.Component {
  constructor(props) {
    super(props);
@@ -111,6 +112,7 @@ class Profile extends React.Component {
 export default Profile;
 
 /*
+=======
 const Profile = (props)=>(
   <div className="profile">
     <h2> Applicant : </h2>
