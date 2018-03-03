@@ -12,7 +12,7 @@ app.get('/assesments', function(req, res){
       console.log("error hitting mind assesment db");
       res.sendStatus(500);
     }else {
-      console.log('erroe here');
+      console.log('works');
       res.status(200).json(results);
     }
   })
