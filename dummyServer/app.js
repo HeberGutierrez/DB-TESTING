@@ -12,12 +12,13 @@ app.get('/assesments', function(req, res){
       console.log("error hitting mind assesment db");
       res.sendStatus(500);
     }else {
+      console.log('erroe here');
       res.status(200).json(results);
     }
   })
 });
 
-app.get('/readingassesments', function(req, res){
+app.get('/assesments', function(req, res){
   database.selectReadingQ((err, results)  => {
     if(err){
       console.log('error hitting reading assesment db');
@@ -49,11 +50,6 @@ app.get('/assesments', function(req, res){
     }
   })
 });
-
-/*app.post('/assesments', function(req, res){
-
-})*/
-
 
 
 app.listen(3000, function() {
