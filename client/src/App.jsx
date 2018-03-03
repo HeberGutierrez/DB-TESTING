@@ -4,7 +4,7 @@ import $ from 'jquery';
 import Profile from './components/Profile/Profile.jsx'
 import Assesments from './components/Assesments/Assesments.jsx';
 import ReadingTest from './components/Assesments/Reading/ReadingQList.jsx';
-import MindQuestions from './components/Assesments/Mind/MindQuestions.jsx'
+import MindQuestions from './components/Assesments/Mind/MindQuestions.jsx';
 
 class App extends React.Component {
   constructor(props){
@@ -33,11 +33,10 @@ class App extends React.Component {
   }
   render(){
     return(<div>
-    <h1>Start your Assesments!</h1>
     <Assesments assesments={this.state.assesments}/>
     <h2>hello</h2>
     <Profile />
-    <MindQuestions/>
+    <MindQuestions assesments={this.state.assesments}/>
     <ReadingTest />
     </div>
   )
