@@ -2,11 +2,13 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var database = require('../sql_Database/data.js');
+var ejs = require('ejs');
+var expressLayouts = require('express-ejs-layouts');
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(__dirname + '/static/js'));
 
-app.get('/assesments', function(req, res){
+app.get('/public/src/components/Assesments/Mind/', function(req, res){
   database.selectMindQ((err, results) => {
     if(err){
       console.log("error hitting mind assesment db");
@@ -18,7 +20,7 @@ app.get('/assesments', function(req, res){
   })
 });
 
-app.get('/rAssesments', function(req, res){
+app.get('/public/src/components/Assesments/Reading/', function(req, res){
   database.selectReadingQ((err, results)  => {
     if(err){
       console.log('error hitting reading assesment db');
@@ -29,7 +31,7 @@ app.get('/rAssesments', function(req, res){
   })
 });
 
-app.get('/assesments', function(req, res){
+app.get('/public/src/components/Assesments/', function(req, res){
   database.selectWrittenQ((err, results)  => {
     if(err){
       console.log('error hitting written assesment db');
@@ -40,7 +42,7 @@ app.get('/assesments', function(req, res){
   })
 });
 
-app.get('/assesments', function(req, res){
+app.get('/public/src/components/Assesments/Analytical/', function(req, res){
   database.selectAnalyticalQ((err, results)  => {
     if (err) {
       console.log('error hitting analytical assesment db');
@@ -52,6 +54,6 @@ app.get('/assesments', function(req, res){
 });
 
 
-app.listen(3000, function() {
-  console.log('Server started and listening on port 3000');
+app.listen(3005, function() {
+  console.log('Server started and listening on port 3005');
 });

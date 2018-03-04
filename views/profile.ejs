@@ -4,6 +4,7 @@
     <title>Node Authentication</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link class="form-control" href="/public/src/components/Profile/Profile.jsx">
     <style>
         body         { padding-top:80px; word-wrap:break-word; }
     </style>
@@ -31,12 +32,89 @@
                     </p>
 
                 <% } else { %>
-                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                    <a href="/connect-local" class="btn btn-default">Connect Local</a>
                 <% } %>
 
             </div>
         </div>
 
+        <!-- LOCAL INFORMATION -->
+        <div class="container">
+          <form onSubmit="submit">
+            <label>
+              Name:
+              <input type="text"/>
+            </label>
+            <br/>
+            <label>
+              Last Name:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Nickname:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Email:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Phone:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Birthday:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Gender:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Nationality:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Identification:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Education Level:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Coding Experience:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Personal Reference:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Holacode Discovery:
+              <input type="text" />
+            </label>
+            <br/>
+            <label>
+              Commitment:
+              <input type="text" />
+            </label>
+            <br/>
+            <input type="submit" value="Submit"/>
+          </form>
+
+          </div>
     </div>
 
 

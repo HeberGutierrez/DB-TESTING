@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+ const mysql = require('mysql');
+ const express = require('express');
+ const path = require('path');
+ const cookieParser = require('cookie-parser');
+ const bodyParser = require('body-parser');
+ const exphbs = require('express-handlebars');
+ const expressValidator = require('express-validator');
+ const flash = require('connect-flash');
+ const session = require('express-session');
+ const passport = require('passport');
+ const LocalStragety = require('passport-local');
+ const mongo = require('mongodb');
+ const mongoose = require('mongoose');
+ const ejs = require('ejs');
+ const expressLayouts = require('express-ejs-layouts');
+ const router = express.Router();
+ const app = express();

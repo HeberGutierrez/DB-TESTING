@@ -1,13 +1,14 @@
 // load all the things we need
 var LocalStrategy = require('passport-local').Strategy;
-
-
 // load up the user model
-var User = require('../app/models/user');
+var expressLayouts = require('express-ejs-layouts');
+var ejs = require('ejs');
+var User = require('../public/models/user.js');
+// =========================================================================
+
+
 
 module.exports = function(passport) {
-
-  // =========================================================================
   // passport session setup ==================================================
   // =========================================================================
   // required for persistent login sessions

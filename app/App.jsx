@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import Profile from './components/Profile/Profile.jsx'
-import Assesments from './components/Assesments/Assesments.jsx';
-import ReadingTest from './components/Assesments/Reading/ReadingQList.jsx';
-import MindQuestions from './components/Assesments/Mind/MindQuestions.jsx';
+import Profile from '../public/src/components/Profile/Profile.jsx'
+import Assesments from '../public/src/components/Assesments/Assesments.jsx';
+import ReadingTest from '../public/src/components/Assesments/Reading/ReadingQList.jsx';
+import MindQuestions from '../public/src/components/Assesments/Mind/MindQuestions.jsx';
 
 class App extends React.Component {
   constructor(props){
@@ -18,7 +18,7 @@ class App extends React.Component {
   }
   getMindAssesment(){
     $.ajax({
-      url:'/assesments',
+      url:'/public/src/components/Assesments/Mindassesments',
       method: 'GET',
       success: (results)=>{
         this.setState({
@@ -33,7 +33,7 @@ class App extends React.Component {
   }
   getReadingAssesment(){
     $.ajax({
-      url:'/rAssesments',
+      url:'/public/src/components/Assesments/Reading',
       method: 'GET',
       success: (results)=>{
         this.setState({
@@ -61,14 +61,14 @@ class App extends React.Component {
     <Profile />
     </div>
     <div>
-    <MindQuestions assesments={this.state.assesments}/>
+    <MindQuestions mindassesments={this.state.mind}/>
     </div>
     <div>
-    <ReadingTest assesments={this.state.reading}/>
+    <ReadingTest readingassesments={this.state.reading}/>
     </div>
     </div>
   )
   }
-};
+}
 
-ReactDOM.render(<App />, document.getElementById('app'));;
+export default App;

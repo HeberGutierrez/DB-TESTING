@@ -4,7 +4,7 @@
 // get all the tools we need
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 4000;
+var port = process.env.PORT || 3005;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -14,13 +14,18 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var configDB = require('./config/database.js');
-var database = require('./sql_Database/data.js');
+var configDB = require('../config/database.js');
+var database = require('../sql_Database/data.js');
+
+var debug = require('debug')('express-react:server');
 
 // configuration databases ===============================================================
 mongoose.connect(configDB.url); // connect to our database mongo
 
-require('./config/passport')(passport); // pass passport for configuration
+//================================
+require('../config/passport')(passport); // pass passport for configuration
+
+
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
@@ -43,9 +48,9 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // mysql config ================================================================
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(__dirname + '../config/'));
 
-app.get('/assesments', function(req, res){
+app.get('/public/src/components/assesments', function(req, res){
   database.selectMindQ((err, results) => {
     if(err){
       console.log("error hitting mind assesment db");
@@ -57,7 +62,7 @@ app.get('/assesments', function(req, res){
   })
 });
 
-app.get('/assesments', function(req, res){
+app.get('/public/src/components/assesments', function(req, res){
   database.selectReadingQ((err, results)  => {
     if(err){
       console.log('error hitting reading assesment db');
@@ -68,7 +73,7 @@ app.get('/assesments', function(req, res){
   })
 });
 
-app.get('/assesments', function(req, res){
+app.get('/public/src/components/assesments', function(req, res){
   database.selectWrittenQ((err, results)  => {
     if(err){
       console.log('error hitting written assesment db');
@@ -79,7 +84,7 @@ app.get('/assesments', function(req, res){
   })
 });
 
-app.get('/assesments', function(req, res){
+app.get('/public/src/components/assesments', function(req, res){
   database.selectAnalyticalQ((err, results)  => {
     if (err) {
       console.log('error hitting analytical assesment db');
@@ -92,7 +97,7 @@ app.get('/assesments', function(req, res){
 
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('../server/routes/index.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // launch ======================================================================
 app.listen(port);

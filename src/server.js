@@ -1,14 +1,14 @@
 module.exports = function(app, passport) {
 
-  // normal routes ===============================================================
 
-  // show the home page (will also have our login links)
+  // normal routes ===============================================================
+ // show the home page (will also have our login links)
   app.get('/', function(req, res) {
-    res.render('index.ejs');
+    res.render('/views/index.ejs');
   });
 
   // PROFILE SECTION =========================
-  app.get('/App', isLoggedIn, function(req, res) {
+  app.get('/', isLoggedIn, function(req, res) {
     res.render('App.jsx', {
       user: req.user
     });
@@ -61,14 +61,14 @@ module.exports = function(app, passport) {
   // =============================================================================
 
   // locally --------------------------------
-  app.get('/connect/local', function(req, res) {
+  app.get('/connect-local', function(req, res) {
     res.render('connect-local.ejs', {
       message: req.flash('loginMessage')
     });
   });
-  app.post('/connect/local', passport.authenticate('local-signup', {
+  app.post('/connect-local', passport.authenticate('local-signup', {
     successRedirect: '/profile', // redirect to the secure profile section
-    failureRedirect: '/connect/local', // redirect back to the signup page if there is an error
+    failureRedirect: '/connect-local', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }));
 
